@@ -20,6 +20,7 @@ class StartViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     let toolbar = UIToolbar()
     var currentSelectedIndex = 0
     let DEFAUL_GAME_MODE = "Easy"
+    var isHighscoreButtonEnabled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,13 +66,19 @@ class StartViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func highscoreButtonClicked(_ sender: Any) {
-        
+        DispatchQueue.main.async {
+            if self.isHighscoreButtonEnabled {
+                self.performSegue(withIdentifier: "showHighscores", sender: nil)
+            }
+            
+        }
     }
     
     //MARK: - Methods
     func setHighscoreLabel() {
         if let score = UserDefaultsManager.shared.highscore {
-            bestScoreLabel.text = String(format: "%d secs", score)
+            isHighscoreButtonEnabled = score.count > 1 ? true : false
+            bestScoreLabel.text = String(format: "%d points", score[0])
         } else {
             bestScoreLabel.text = "--"
         }

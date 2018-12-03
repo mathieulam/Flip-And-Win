@@ -11,16 +11,27 @@ import UIKit
 class HighscoreTableViewCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!{
+        didSet {
+            self.containerView.layer.cornerRadius = 5
+            self.containerView.layer.masksToBounds = true
+        }
+    }
+    
+    static let reuseId = "ScoreCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func configureCell(index: Int, score: Int) {
+        numberLabel.text = String(format: "%d.", index)
+        scoreLabel.text = String(format: "%d points", score)
     }
     
 }

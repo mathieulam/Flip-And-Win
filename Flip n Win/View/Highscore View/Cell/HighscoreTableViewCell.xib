@@ -12,43 +12,58 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="KGk-i7-Jjw" customClass="HighscoreTableViewCell" customModule="Flip_n_Win" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScoreCell" rowHeight="75" id="KGk-i7-Jjw" customClass="HighscoreTableViewCell" customModule="Flip_n_Win" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Waq-fd-Uz9">
-                        <rect key="frame" x="8" y="17.5" width="25" height="21"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQ5-5Y-QQv">
+                        <rect key="frame" x="10" y="10" width="300" height="50.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Waq-fd-Uz9">
+                                <rect key="frame" x="20" y="15" width="25" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="yJk-Qf-eab"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ha-vE-sQL">
+                                <rect key="frame" x="53" y="15" width="227" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="yJk-Qf-eab"/>
+                            <constraint firstItem="6Ha-vE-sQL" firstAttribute="leading" secondItem="Waq-fd-Uz9" secondAttribute="trailing" constant="8" id="4an-Di-eGG"/>
+                            <constraint firstItem="Waq-fd-Uz9" firstAttribute="leading" secondItem="iQ5-5Y-QQv" secondAttribute="leading" constant="20" id="HJl-A8-ybt"/>
+                            <constraint firstAttribute="trailing" secondItem="6Ha-vE-sQL" secondAttribute="trailing" constant="20" id="MWe-Lw-4WA"/>
+                            <constraint firstItem="6Ha-vE-sQL" firstAttribute="centerY" secondItem="iQ5-5Y-QQv" secondAttribute="centerY" id="NFN-Bf-M0D"/>
+                            <constraint firstItem="Waq-fd-Uz9" firstAttribute="centerY" secondItem="iQ5-5Y-QQv" secondAttribute="centerY" id="RGo-Xb-apW"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ha-vE-sQL">
-                        <rect key="frame" x="41" y="17.5" width="279" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="6Ha-vE-sQL" secondAttribute="trailing" id="Hn8-3t-0xQ"/>
-                    <constraint firstItem="Waq-fd-Uz9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="P25-UJ-mWY"/>
-                    <constraint firstItem="Waq-fd-Uz9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Plv-wD-Po4"/>
-                    <constraint firstItem="6Ha-vE-sQL" firstAttribute="leading" secondItem="Waq-fd-Uz9" secondAttribute="trailing" constant="8" id="dKf-TO-fhx"/>
-                    <constraint firstItem="6Ha-vE-sQL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oLR-ax-sQ9"/>
+                    <constraint firstItem="iQ5-5Y-QQv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="5WW-PZ-Wb7"/>
+                    <constraint firstAttribute="trailing" secondItem="iQ5-5Y-QQv" secondAttribute="trailing" constant="10" id="ETN-AH-2Wq"/>
+                    <constraint firstItem="iQ5-5Y-QQv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="IQX-pJ-tra"/>
+                    <constraint firstAttribute="bottom" secondItem="iQ5-5Y-QQv" secondAttribute="bottom" constant="10" id="dgB-MR-WUH"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="containerView" destination="iQ5-5Y-QQv" id="qdn-55-l5r"/>
                 <outlet property="numberLabel" destination="Waq-fd-Uz9" id="HYb-6k-bb7"/>
                 <outlet property="scoreLabel" destination="6Ha-vE-sQL" id="SZz-aq-kZB"/>
             </connections>
-            <point key="canvasLocation" x="52.799999999999997" y="60.26986506746627"/>
+            <point key="canvasLocation" x="52.799999999999997" y="67.016491754122939"/>
         </tableViewCell>
     </objects>
 </document>

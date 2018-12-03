@@ -49,10 +49,10 @@ class UserDefaultsManager {
         }
     }
     
-    var highscore: Int? {
+    var highscore: [Int]? {
         get {
             guard let mode = gameMode,
-            let highscore = UserDefaults.standard.value(forKey: mode.rawValue) as? Int
+            let highscore = UserDefaults.standard.value(forKey: mode.rawValue) as? [Int]
             else {
                 return nil
             }

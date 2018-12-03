@@ -256,15 +256,22 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
             case .win:
                 levelLabel.text = "Hooray!!!"
-                let newScore = presenter.getTimerSeconds() - seconds
-                ruleLabel.text = String(format: "Score: %d \nTime Bonus: %d \nBeated in: %d seconds", gameController.getScore(), seconds, newScore)
+                let time = presenter.getTimerSeconds() - seconds
+                ruleLabel.text = String(format: "Score: %d \nTime Bonus: %d \nBeated in: %d seconds", gameController.getScore(), seconds, time)
+                let currentScore = gameController.getScore() + seconds
                 
-                if let previousScore = UserDefaultsManager.shared.highscore {
-                    if  newScore < previousScore {
-                        UserDefaultsManager.shared.highscore = newScore
+                if var userDefaultScores = UserDefaultsManager.shared.highscore {
+                    userDefaultScores = userDefaultScores.sorted(by: { $0 > $1 })
+                    if  currentScore > userDefaultScores[0] {
+                        userDefaultScores.append(currentScore)
+                        userDefaultScores = userDefaultScores.sorted(by: { $0 > $1 })
+                        if userDefaultScores.count > 10 {
+                            userDefaultScores.removeLast()
+                        }
+                        UserDefaultsManager.shared.highscore = userDefaultScores
                     }
                 } else {
-                    UserDefaultsManager.shared.highscore = newScore
+                    UserDefaultsManager.shared.highscore = [currentScore]
                 }
                 
                 startButton.setTitle("Restart", for: .normal)
