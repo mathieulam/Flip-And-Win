@@ -17,6 +17,7 @@ protocol MemoryGameDelegate {
     func memoryGame(game: MemoryGame, showCards cards: [Card])
     func memoryGame(game: MemoryGame, hideCards cards: [Card])
     func memoryGameDidEnd(game: MemoryGame)
+    func showPointView()
 }
 
 // MARK: - MemoryGame
@@ -28,6 +29,9 @@ class MemoryGame {
     var cards:[Card] = [Card]()
     var delegate: MemoryGameDelegate?
     var isPlaying: Bool = false
+    
+    private var gameMode: GameMode = GameMode.Easy
+    private var score: Int = 0
     
     private var cardsShown:[Card] = [Card]()
     private var startTime:NSDate?
@@ -44,12 +48,17 @@ class MemoryGame {
         cards = randomCards(cardsData: cardsData)
         isPlaying = true
         delegate?.memoryGameDidStart(game: self)
+        if let mode = UserDefaultsManager.shared.gameMode {
+            gameMode = mode
+        }
+        score = 0
     }
     
     func stopGame() {
         isPlaying = false
         cards.removeAll()
         cardsShown.removeAll()
+        score = 0
     }
     
     func didSelectCard(card: Card?) {
@@ -61,6 +70,15 @@ class MemoryGame {
             let unpaired = unpairedCard()!
             if card.equals(card: unpaired) {
                 cardsShown.append(card)
+                switch gameMode {
+                case .Easy:
+                    score += 100
+                case .Medium:
+                    score += 150
+                case .Hard:
+                    score += 200
+                }
+                self.delegate?.showPointView()
             } else {
                 let unpairedCard = cardsShown.removeLast()
                 
@@ -92,6 +110,10 @@ class MemoryGame {
             }
         }
         return nil
+    }
+    
+    func getScore() -> Int {
+        return score
     }
     
     private func finishGame() {

@@ -10,6 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MemoryGameDelegate, GameViewProtocol {
 
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!{
         didSet {
@@ -40,6 +41,8 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var timer:Timer?
     var seconds: Int = 0
     
+    var scoreDefaultString: String  = "Score: %d"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         startButton.isEnabled = false
@@ -56,12 +59,14 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         gameController.delegate = self
         resetGame()
         configurePopup(status: PopupStatus.newGame, show: true)
+        setScorelabel(withTimeBonus: false)
     }
     
     @IBAction func startButtonClicked(_ sender: Any) {
         configurePopup(status: PopupStatus.newGame, show: false)
         resetGame()
         setupNewGame()
+        setScorelabel(withTimeBonus: false)
     }
     
     @IBAction func quitButtonClicked(_ sender: Any) {
@@ -84,7 +89,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @objc func countdown() {
         seconds -= 1
-        timeLabel.text = String(format: "Remaining time: %d", seconds)
+        timeLabel.text = String(format: "%ds", seconds)
         timeLabel.textColor = seconds <= 10 ? .red : UIColor(red: 221/255, green: 147/255, blue: 14/255, alpha: 255/255)
         if seconds == 0 {
             configurePopup(status: PopupStatus.lose, show: true)
@@ -155,6 +160,48 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - MemoryGameDelegate
     
+    func showPointView() {
+        var xPos = CGFloat()
+        var yPos = CGFloat()
+        
+        //Finds random CGFloat within the width and height
+        xPos = (CGFloat(arc4random_uniform(UInt32((self.view?.frame.size.width)!))))
+        yPos = (CGFloat(arc4random_uniform(UInt32((self.view?.frame.size.height)!))))
+        
+        if (xPos > ((self.view?.bounds.width)! - (self.view?.bounds.width)! * 0.20)){
+            xPos = xPos.truncatingRemainder(dividingBy: ((self.view?.bounds.width)! - (self.view?.bounds.width)! * 0.20))}
+        if (yPos > ((self.view?.bounds.height)! - (self.view?.bounds.width)! * 0.20)){
+            yPos = yPos.truncatingRemainder(dividingBy: ((self.view?.bounds.height)! - (self.view?.bounds.width)! * 0.20)) }
+        
+        let pointLabel = UILabel()
+        pointLabel.frame = CGRect(x: xPos, y: yPos, width: 200, height: 60)
+        switch presenter.getGameMode() {
+        case .Easy:
+            pointLabel.text = "+100"
+        case .Medium:
+            pointLabel.text = "+150"
+        case .Hard:
+            pointLabel.text = "+200"
+        }
+        pointLabel.textColor = .green
+        self.view.addSubview(pointLabel)
+        pointLabel.alpha = 1
+        
+        // Fade in
+        UIView.animate(withDuration: 3.0, animations: {
+            pointLabel.alpha = 1
+        }, completion: { finished in
+            // Fade Out
+            UIView.animate(withDuration: 3.0, animations: {
+                pointLabel.alpha = 0
+            }, completion: { finished in
+                
+            })
+        })
+        
+        setScorelabel(withTimeBonus: false)
+        
+    }
     
     func memoryGameDidStart(game: MemoryGame) {
         cardsCollectionView.isUserInteractionEnabled = true
@@ -184,6 +231,18 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         configurePopup(status: PopupStatus.win, show: true)
     }
     
+    func setScorelabel(withTimeBonus: Bool)  {
+    
+        let currentScore = withTimeBonus ? String(format: scoreDefaultString, gameController.getScore() + seconds): String(format: scoreDefaultString, gameController.getScore())
+        
+        
+        let score = NSMutableAttributedString.init(string: currentScore)
+        score.setAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
+                             NSAttributedString.Key.foregroundColor: UIColor.gray],
+                            range: NSMakeRange(0, 6))
+        scoreLabel.attributedText = score
+    }
+    
     func configurePopup(status: PopupStatus, show: Bool)  {
         
         if show {
@@ -198,7 +257,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
             case .win:
                 levelLabel.text = "Hooray!!!"
                 let newScore = presenter.getTimerSeconds() - seconds
-                ruleLabel.text = String(format: "Good job you beated the game in %d seconds", newScore)
+                ruleLabel.text = String(format: "Score: %d \nTime Bonus: %d \nBeated in: %d seconds", gameController.getScore(), seconds, newScore)
                 
                 if let previousScore = UserDefaultsManager.shared.highscore {
                     if  newScore < previousScore {
@@ -207,7 +266,6 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 } else {
                     UserDefaultsManager.shared.highscore = newScore
                 }
-                
                 
                 startButton.setTitle("Restart", for: .normal)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -220,21 +278,23 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     self.launcher.launchConfettis()
                 }
                 
+                self.view.bringSubviewToFront(scoreLabel)
+                
             case .lose:
                 levelLabel.text = "Time's Up 😬"
                 ruleLabel.text = String(format: "Sorry you have lost. Hit 'Try Again' to give it another try", presenter.getTimerSeconds() - seconds)
                 startButton.setTitle("Try Again", for: .normal)
                 self.rulesView.isHidden = false
                 self.blurVisualEffect.isHidden = false
-            
-
+                self.view.bringSubviewToFront(scoreLabel)
             }
-            
         } else {
             self.rulesView.isHidden = true
             self.confettiView.isHidden = true
             self.blurVisualEffect.isHidden = true
         }
+        
+        setScorelabel(withTimeBonus: true)
     }
     
 }

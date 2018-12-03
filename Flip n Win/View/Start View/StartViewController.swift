@@ -64,6 +64,10 @@ class StartViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
     }
     
+    @IBAction func highscoreButtonClicked(_ sender: Any) {
+        
+    }
+    
     //MARK: - Methods
     func setHighscoreLabel() {
         if let score = UserDefaultsManager.shared.highscore {

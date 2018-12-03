@@ -70,12 +70,18 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="7XY-Lh-OLJ">
-                                <rect key="frame" x="159" y="40" width="200" height="0.0"/>
+                                <rect key="frame" x="279" y="40" width="80" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="TT7-ZE-xLz"/>
+                                    <constraint firstAttribute="width" constant="80" id="TT7-ZE-xLz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDs-Hx-iJB">
+                                <rect key="frame" x="187.5" y="40" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.86666666670000003" green="0.57647058819999997" blue="0.055821078400000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cancel" translatesAutoresizingMaskIntoConstraints="NO" id="qWs-z6-g3F">
@@ -178,6 +184,7 @@ Good Luck</string>
                         <color key="backgroundColor" red="0.1764705882" green="0.16862745100000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qWs-z6-g3F" firstAttribute="leading" secondItem="RlW-Or-s4m" secondAttribute="leading" id="11Q-21-e51"/>
+                            <constraint firstItem="tDs-Hx-iJB" firstAttribute="centerX" secondItem="tMc-T1-P7S" secondAttribute="centerX" id="31C-TN-KLn"/>
                             <constraint firstItem="5U4-uu-HXu" firstAttribute="bottom" secondItem="N0U-H7-6xP" secondAttribute="bottom" id="62f-Fv-dCT"/>
                             <constraint firstItem="RlW-Or-s4m" firstAttribute="top" secondItem="N0U-H7-6xP" secondAttribute="top" constant="10" id="68X-bp-eDm"/>
                             <constraint firstItem="qWs-z6-g3F" firstAttribute="bottom" secondItem="RlW-Or-s4m" secondAttribute="bottom" id="7Mk-jj-dB9"/>
@@ -196,6 +203,7 @@ Good Luck</string>
                             <constraint firstItem="qWs-z6-g3F" firstAttribute="top" secondItem="RlW-Or-s4m" secondAttribute="top" id="p7l-y1-9jJ"/>
                             <constraint firstItem="5U4-uu-HXu" firstAttribute="trailing" secondItem="N0U-H7-6xP" secondAttribute="trailing" id="rIc-8f-yX2"/>
                             <constraint firstItem="7XY-Lh-OLJ" firstAttribute="centerY" secondItem="RlW-Or-s4m" secondAttribute="centerY" id="rsz-qh-UuT"/>
+                            <constraint firstItem="tDs-Hx-iJB" firstAttribute="centerY" secondItem="7XY-Lh-OLJ" secondAttribute="centerY" id="vzP-V4-G8S"/>
                             <constraint firstItem="RlW-Or-s4m" firstAttribute="leading" secondItem="N0U-H7-6xP" secondAttribute="leading" constant="16" id="yAf-4f-sfg"/>
                             <constraint firstItem="QgO-b2-kbj" firstAttribute="centerX" secondItem="tMc-T1-P7S" secondAttribute="centerX" id="z7p-Mg-KtO"/>
                         </constraints>
@@ -209,13 +217,58 @@ Good Luck</string>
                         <outlet property="quitButton" destination="RwI-TQ-VfC" id="O3U-Ll-MfE"/>
                         <outlet property="ruleLabel" destination="qQu-xF-Bnv" id="9WN-47-k5q"/>
                         <outlet property="rulesView" destination="QgO-b2-kbj" id="4L5-6A-rXj"/>
+                        <outlet property="scoreLabel" destination="tDs-Hx-iJB" id="DpJ-jK-Jap"/>
                         <outlet property="startButton" destination="cSU-7R-cDP" id="hWK-AR-PMl"/>
                         <outlet property="timeLabel" destination="7XY-Lh-OLJ" id="cQ2-3f-ae5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AqI-yL-qVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1319.2" y="47.226386806596707"/>
+            <point key="canvasLocation" x="1414" y="-287"/>
+        </scene>
+        <!--Highscore View Controller-->
+        <scene sceneID="Saq-42-Z6V">
+            <objects>
+                <viewController id="aI7-bO-lrn" customClass="HighscoreViewController" customModule="Flip_n_Win" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ouh-q8-AeP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscores in Easy Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kno-hn-9H2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="75"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.57647058819999997" blue="0.055821078400000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="j7S-kZ-r2R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i8p-nl-zkS">
+                                <rect key="frame" x="0.0" y="95" width="375" height="572"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1764705882" green="0.16862745100000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="i8p-nl-zkS" firstAttribute="bottom" secondItem="RZj-zY-vjh" secondAttribute="bottom" id="7ky-J7-JKz"/>
+                            <constraint firstItem="kno-hn-9H2" firstAttribute="leading" secondItem="RZj-zY-vjh" secondAttribute="leading" id="GF5-hj-QEf"/>
+                            <constraint firstItem="i8p-nl-zkS" firstAttribute="leading" secondItem="RZj-zY-vjh" secondAttribute="leading" id="O64-d3-2gh"/>
+                            <constraint firstItem="kno-hn-9H2" firstAttribute="trailing" secondItem="RZj-zY-vjh" secondAttribute="trailing" id="O71-kh-I87"/>
+                            <constraint firstItem="kno-hn-9H2" firstAttribute="top" secondItem="RZj-zY-vjh" secondAttribute="top" id="f5l-7c-Ck2"/>
+                            <constraint firstItem="i8p-nl-zkS" firstAttribute="trailing" secondItem="RZj-zY-vjh" secondAttribute="trailing" id="fct-uc-FAG"/>
+                            <constraint firstItem="i8p-nl-zkS" firstAttribute="top" secondItem="kno-hn-9H2" secondAttribute="bottom" id="tdP-SZ-aOl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RZj-zY-vjh"/>
+                    </view>
+                    <connections>
+                        <outlet property="highscoreTableView" destination="i8p-nl-zkS" id="jkf-Va-Oo0"/>
+                        <outlet property="titleLabel" destination="kno-hn-9H2" id="91Y-A1-gC0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Jg-1K-mjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1413.5999999999999" y="517.6911544227886"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -226,13 +279,13 @@ Good Luck</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flip'n  Win" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="50" translatesAutoresizingMaskIntoConstraints="NO" id="DpY-ch-OtM">
-                                <rect key="frame" x="16" y="55" width="343" height="233"/>
+                                <rect key="frame" x="16" y="55" width="343" height="202"/>
                                 <fontDescription key="fontDescription" name="Pijamas" family="Pijamas" pointSize="100"/>
                                 <color key="textColor" red="1" green="0.93333333330000001" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9s5-dg-82Y">
-                                <rect key="frame" x="47" y="303" width="281" height="40"/>
+                                <rect key="frame" x="47" y="272" width="281" height="40"/>
                                 <color key="backgroundColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="KKI-9a-w7F"/>
@@ -242,14 +295,14 @@ Good Luck</string>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="qPU-NW-OQk">
-                                <rect key="frame" x="175" y="310.5" width="25" height="25"/>
+                                <rect key="frame" x="175" y="279.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="iUv-6p-Y9U"/>
                                     <constraint firstAttribute="height" constant="25" id="nU5-Ec-UEj"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqz-oS-5kt">
-                                <rect key="frame" x="47" y="358" width="281" height="40"/>
+                                <rect key="frame" x="47" y="327" width="281" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4Y-ra-LIS">
                                         <rect key="frame" x="20" y="9.5" width="59.5" height="21"/>
@@ -275,13 +328,13 @@ Good Luck</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwY-Mj-evd" customClass="CustomPickerButton" customModule="Flip_n_Win" customModuleProvider="target">
-                                <rect key="frame" x="47" y="358" width="281" height="40"/>
+                                <rect key="frame" x="47" y="327" width="281" height="40"/>
                                 <connections>
                                     <action selector="modeButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pdt-FX-Nkh"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYP-e5-H45">
-                                <rect key="frame" x="47" y="413" width="281" height="40"/>
+                                <rect key="frame" x="47" y="382" width="281" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uat-1y-aVP">
                                         <rect key="frame" x="20" y="9.5" width="47" height="21"/>
@@ -306,14 +359,22 @@ Good Luck</string>
                                     <constraint firstItem="uat-1y-aVP" firstAttribute="centerY" secondItem="fYP-e5-H45" secondAttribute="centerY" id="sWM-NE-A0b"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GH7-gf-xuv">
+                                <rect key="frame" x="47" y="382" width="281" height="40"/>
+                                <connections>
+                                    <action selector="highscoreButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MAd-2i-xby"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1764705882352941" green="0.16862745098039217" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fYP-e5-H45" firstAttribute="trailing" secondItem="LwY-Mj-evd" secondAttribute="trailing" id="0JQ-Kc-gue"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9s5-dg-82Y" secondAttribute="trailing" constant="47" id="42j-uC-T8Q"/>
+                            <constraint firstItem="fYP-e5-H45" firstAttribute="trailing" secondItem="GH7-gf-xuv" secondAttribute="trailing" id="8fv-uz-wkY"/>
                             <constraint firstItem="fYP-e5-H45" firstAttribute="leading" secondItem="LwY-Mj-evd" secondAttribute="leading" id="AWl-se-FXb"/>
                             <constraint firstItem="LwY-Mj-evd" firstAttribute="leading" secondItem="eqz-oS-5kt" secondAttribute="leading" id="Bce-aP-Rb8"/>
                             <constraint firstItem="qPU-NW-OQk" firstAttribute="centerY" secondItem="9s5-dg-82Y" secondAttribute="centerY" id="IEY-F1-xar"/>
+                            <constraint firstItem="fYP-e5-H45" firstAttribute="leading" secondItem="GH7-gf-xuv" secondAttribute="leading" id="Lfc-R1-yBa"/>
                             <constraint firstItem="fYP-e5-H45" firstAttribute="top" secondItem="eqz-oS-5kt" secondAttribute="bottom" constant="15" id="P91-s9-gHA"/>
                             <constraint firstItem="DpY-ch-OtM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="PSj-JJ-RkV"/>
                             <constraint firstItem="LwY-Mj-evd" firstAttribute="bottom" secondItem="eqz-oS-5kt" secondAttribute="bottom" id="QSD-Dx-eRe"/>
@@ -323,9 +384,11 @@ Good Luck</string>
                             <constraint firstItem="qPU-NW-OQk" firstAttribute="centerX" secondItem="9s5-dg-82Y" secondAttribute="centerX" id="cGu-4E-nrf"/>
                             <constraint firstItem="LwY-Mj-evd" firstAttribute="trailing" secondItem="eqz-oS-5kt" secondAttribute="trailing" id="ewu-qh-20d"/>
                             <constraint firstItem="eqz-oS-5kt" firstAttribute="top" secondItem="9s5-dg-82Y" secondAttribute="bottom" constant="15" id="flO-kq-kzB"/>
+                            <constraint firstItem="fYP-e5-H45" firstAttribute="top" secondItem="GH7-gf-xuv" secondAttribute="top" id="g3P-5l-BZV"/>
                             <constraint firstItem="LwY-Mj-evd" firstAttribute="top" secondItem="eqz-oS-5kt" secondAttribute="top" id="gra-gt-Dju"/>
                             <constraint firstItem="9s5-dg-82Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="gzy-KV-cJI"/>
                             <constraint firstItem="eqz-oS-5kt" firstAttribute="trailing" secondItem="9s5-dg-82Y" secondAttribute="trailing" id="jco-yd-UbP"/>
+                            <constraint firstItem="fYP-e5-H45" firstAttribute="bottom" secondItem="GH7-gf-xuv" secondAttribute="bottom" id="tDU-pG-7IQ"/>
                             <constraint firstItem="eqz-oS-5kt" firstAttribute="leading" secondItem="9s5-dg-82Y" secondAttribute="leading" id="uDa-rQ-0yl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -339,6 +402,7 @@ Good Luck</string>
                         <outlet property="gameModeView" destination="eqz-oS-5kt" id="Lsj-4I-v2R"/>
                         <outlet property="playButton" destination="9s5-dg-82Y" id="al4-n9-TAS"/>
                         <segue destination="vFy-BZ-dG6" kind="show" identifier="showGame" id="svO-K1-UNJ"/>
+                        <segue destination="aI7-bO-lrn" kind="show" identifier="showHighscore" id="ryo-CU-Nvv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
