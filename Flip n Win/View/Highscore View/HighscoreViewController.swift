@@ -18,7 +18,7 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         if let gameMode = UserDefaultsManager.shared.gameMode {
-            titleLabel.text = String(format: "Highscores: %@", gameMode.rawValue)
+            titleLabel.text = String(format: NSLocalizedString("highscoreTitle", comment: "View title"), gameMode.rawValue)
         }
         self.highscoreTableView.delegate = self
         self.highscoreTableView.dataSource = self
@@ -29,7 +29,6 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
         self.highscoreTableView.reloadData()
         
     }
-    
     
     //MARK: - TableView DataSource protocol
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,7 +55,4 @@ class HighscoreViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func backButtonClicked(_ sender: Any) {
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
-    
-    
-    
 }

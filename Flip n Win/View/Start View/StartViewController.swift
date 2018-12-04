@@ -19,15 +19,15 @@ class StartViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var picker = UIPickerView()
     let toolbar = UIToolbar()
     var currentSelectedIndex = 0
-    let DEFAUL_GAME_MODE = "Easy"
     var isHighscoreButtonEnabled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //set default game mode
-        gameModeLabel.text = DEFAUL_GAME_MODE
-        UserDefaultsManager.shared.gameMode = GameMode(rawValue: DEFAUL_GAME_MODE)
+        let defaultGameMode = NSLocalizedString("easy", comment: "Default Game Mode")
+        gameModeLabel.text = defaultGameMode
+        UserDefaultsManager.shared.gameMode = GameMode(rawValue: defaultGameMode)
         
         //set highscore label
         setHighscoreLabel()
@@ -78,9 +78,10 @@ class StartViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func setHighscoreLabel() {
         if let score = UserDefaultsManager.shared.highscore {
             isHighscoreButtonEnabled = score.count > 1 ? true : false
-            bestScoreLabel.text = String(format: "%d points", score[0])
+            bestScoreLabel.text = String(format: NSLocalizedString("bestScoreLabelText", comment: "Best score label text"), score[0])
         } else {
-            bestScoreLabel.text = "--"
+            isHighscoreButtonEnabled = false
+            bestScoreLabel.text = NSLocalizedString("bestScoreLabelTextEmpty", comment: "Best score label text empty")
         }
     }
     
@@ -97,7 +98,7 @@ class StartViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         toolbar.sizeToFit()
         toolbar.barTintColor = UIColor(red: 55/255, green: 55/255, blue: 105/255, alpha: 255/255)
         toolbar.tintColor = UIColor(red: 221/255, green: 147/255, blue: 74/255, alpha: 255/255)
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneTapped))
+        let doneButton = UIBarButtonItem(title: NSLocalizedString("done", comment: "Picker Done button title"), style: .plain, target: self, action: #selector(doneTapped))
         toolbar.setItems([doneButton], animated: false)
         toolbar.isUserInteractionEnabled = true
     }

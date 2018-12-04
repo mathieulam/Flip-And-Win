@@ -10,6 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MemoryGameDelegate, GameViewProtocol {
 
+    //Mark: - Outlets
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!{
@@ -31,17 +32,15 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    var presenter: GameViewPresenter!
-    
+    //MARK: - Properties
     let gameController = MemoryGame()
+    var presenter: GameViewPresenter!
     var photosList = [UIImage]()
     var launcher: ConfettiLauncher!
     var gameMode: GameMode = GameMode.Easy
-    
     var timer:Timer?
     var seconds: Int = 0
-    
-    var scoreDefaultString: String  = "Score: %d"
+    var scoreDefaultString: String  = NSLocalizedString("defaultScoreText", comment: "Default score text")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +53,6 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cardsCollectionView.delegate = self
         cardsCollectionView.dataSource = self
-        
         
         gameController.delegate = self
         resetGame()
@@ -89,7 +87,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @objc func countdown() {
         seconds -= 1
-        timeLabel.text = String(format: "%ds", seconds)
+        timeLabel.text = String(format: NSLocalizedString("secondsText", comment: "Seconds text"), seconds)
         timeLabel.textColor = seconds <= 10 ? .red : UIColor(red: 221/255, green: 147/255, blue: 14/255, alpha: 255/255)
         if seconds == 0 {
             configurePopup(status: PopupStatus.lose, show: true)
@@ -111,8 +109,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cardsCollectionView.isUserInteractionEnabled = false
         cardsCollectionView.reloadData()
         self.cardsCollectionView.contentInset.top = max((self.cardsCollectionView.frame.height - self.cardsCollectionView.contentSize.height) / 2, 0)
-        timeLabel.text = String(format: "%@: ---", NSLocalizedString("TIME", comment: "time"))
-        startButton.setTitle(NSLocalizedString("Play", comment: "play"), for: .normal)
+        startButton.setTitle(NSLocalizedString("start", comment: "Start Button Text"), for: .normal)
     }
 
     //MARK: CollectionView Data source
@@ -177,11 +174,11 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         pointLabel.frame = CGRect(x: xPos, y: yPos, width: 200, height: 60)
         switch presenter.getGameMode() {
         case .Easy:
-            pointLabel.text = "+100"
+            pointLabel.text = NSLocalizedString("easyLevelPoints", comment: "Easy level points")
         case .Medium:
-            pointLabel.text = "+150"
+            pointLabel.text = NSLocalizedString("mediumLevelPoints", comment: "Medium level points")
         case .Hard:
-            pointLabel.text = "+200"
+            pointLabel.text = NSLocalizedString("hardLevelPoints", comment: "Hard level points")
         }
         pointLabel.textColor = .green
         self.view.addSubview(pointLabel)
@@ -248,16 +245,16 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if show {
             switch status {
             case .newGame:
-                levelLabel.text = String(format:"Level %@", presenter.getGameMode().rawValue)
-                ruleLabel.text = String(format:"You have %d seconds to complete this challenge. Good Luck!!! ", presenter.getTimerSeconds())
-                startButton.setTitle("Start", for: .normal)
+                levelLabel.text = String(format:NSLocalizedString("popupLevelText", comment: "Popup level text"), presenter.getGameMode().rawValue)
+                ruleLabel.text = String(format:NSLocalizedString("popupRulesText", comment: "Popup rules text"), presenter.getTimerSeconds())
+                startButton.setTitle(NSLocalizedString("start", comment: "Start Button text"), for: .normal)
                 self.rulesView.isHidden = false
                 self.blurVisualEffect.isHidden = false
 
             case .win:
-                levelLabel.text = "Hooray!!!"
+                levelLabel.text = NSLocalizedString("popupWinTitle", comment: "Popup win title")
                 let time = presenter.getTimerSeconds() - seconds
-                ruleLabel.text = String(format: "Score: %d \nTime Bonus: %d \nBeated in: %d seconds", gameController.getScore(), seconds, time)
+                ruleLabel.text = String(format: NSLocalizedString("popupWinContent", comment: "Popup win content"), gameController.getScore(), seconds, time)
                 let currentScore = gameController.getScore() + seconds
                 
                 if var userDefaultScores = UserDefaultsManager.shared.highscore {
@@ -273,8 +270,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 } else {
                     UserDefaultsManager.shared.highscore = [currentScore]
                 }
-                
-                startButton.setTitle("Restart", for: .normal)
+                startButton.setTitle(NSLocalizedString("restart", comment: "Start Button restart text"), for: .normal)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.rulesView.isHidden = false
                     self.blurVisualEffect.isHidden = false
@@ -288,8 +284,8 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.view.bringSubviewToFront(scoreLabel)
                 
             case .lose:
-                levelLabel.text = "Time's Up 😬"
-                ruleLabel.text = String(format: "Sorry you have lost. Hit 'Try Again' to give it another try", presenter.getTimerSeconds() - seconds)
+                levelLabel.text = NSLocalizedString("popupLoseTitle", comment: "Popup lose title")
+                ruleLabel.text = String(format: NSLocalizedString("popupLoseContent", comment: "Popup lose content"), presenter.getTimerSeconds() - seconds)
                 startButton.setTitle("Try Again", for: .normal)
                 self.rulesView.isHidden = false
                 self.blurVisualEffect.isHidden = false

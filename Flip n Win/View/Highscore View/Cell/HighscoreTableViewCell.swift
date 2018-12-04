@@ -30,8 +30,8 @@ class HighscoreTableViewCell: UITableViewCell {
     }
     
     func configureCell(index: Int, score: Int) {
-        numberLabel.text = String(format: "%d.", index)
-        scoreLabel.text = String(format: "%d points", score)
+        numberLabel.text = String(format: NSLocalizedString("rank", comment: "Highscore rank"), index)
+        scoreLabel.text = String(format: NSLocalizedString("highscore", comment: "Highscore"), score)
     }
     
 }
