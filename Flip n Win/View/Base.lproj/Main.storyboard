@@ -249,11 +249,9 @@ Good Luck</string>
                                             <constraint firstAttribute="width" constant="40" id="Jyc-Jo-otZ"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRj-aK-qcy">
-                                        <rect key="frame" x="5" y="0.0" width="40" height="75"/>
-                                        <connections>
-                                            <action selector="backButtonClicked:" destination="aI7-bO-lrn" eventType="touchUpInside" id="VaL-Rl-1Hb"/>
-                                        </connections>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRj-aK-qcy">
+                                        <rect key="frame" x="8" y="23" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.32156862749999998" green="0.55294117649999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

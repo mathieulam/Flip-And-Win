@@ -13,7 +13,6 @@
 		4E511E5421A6F32C009E37A6 /* Flip_n_Win.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E511E5221A6F32C009E37A6 /* Flip_n_Win.xcdatamodeld */; };
 		4E511E5621A6F32E009E37A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E511E5521A6F32E009E37A6 /* Assets.xcassets */; };
 		4E511E5921A6F32E009E37A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E511E5721A6F32E009E37A6 /* LaunchScreen.storyboard */; };
-		4E511E6421A6F32E009E37A6 /* Flip_n_WinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E511E6321A6F32E009E37A6 /* Flip_n_WinTests.swift */; };
 		4E511E7021A712A1009E37A6 /* pyjama.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E511E6F21A712A1009E37A6 /* pyjama.ttf */; };
 		4EB4128621AC4EF100C4603B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB4128521AC4EF100C4603B /* GameViewController.swift */; };
 		4EB4128A21AC4F8100C4603B /* CardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB4128921AC4F8100C4603B /* CardsCollectionViewCell.swift */; };
@@ -34,6 +33,12 @@
 		4EFD910D21B56D7D00670FA7 /* HighscoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD910B21B56D7D00670FA7 /* HighscoreTableViewCell.swift */; };
 		4EFD910E21B56D7D00670FA7 /* HighscoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EFD910C21B56D7D00670FA7 /* HighscoreTableViewCell.xib */; };
 		4EFD911121B5E3EA00670FA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EFD911321B5E3EA00670FA7 /* Localizable.strings */; };
+		4EFD911521B6873100670FA7 /* UnsplashPhotoModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD911421B6873100670FA7 /* UnsplashPhotoModelTest.swift */; };
+		4EFD911621B6884700670FA7 /* UnsplashPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB4129121AD867800C4603B /* UnsplashPhotoModel.swift */; };
+		4EFD911921B68A1300670FA7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB412A021AF49BA00C4603B /* Card.swift */; };
+		4EFD911B21B68B3700670FA7 /* MemoryGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD911A21B68B3700670FA7 /* MemoryGameTest.swift */; };
+		4EFD911C21B68B3C00670FA7 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB412A221AFF24700C4603B /* MemoryGame.swift */; };
+		4EFD911D21B6909C00670FA7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB4129C21AE062A00C4603B /* Utils.swift */; };
 		C10A367CE928B74987E1AC56 /* Pods_Flip_n_Win.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 896FD5F069D2332E792FD523 /* Pods_Flip_n_Win.framework */; };
 		EB589F886CF8C95926B500AD /* Pods_Flip_n_WinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00AABF6B789C8EC137C4D485 /* Pods_Flip_n_WinTests.framework */; };
 /* End PBXBuildFile section */
@@ -60,7 +65,6 @@
 		4E511E5821A6F32E009E37A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E511E5A21A6F32E009E37A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E511E5F21A6F32E009E37A6 /* Flip n WinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Flip n WinTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E511E6321A6F32E009E37A6 /* Flip_n_WinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flip_n_WinTests.swift; sourceTree = "<group>"; };
 		4E511E6521A6F32E009E37A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E511E6F21A712A1009E37A6 /* pyjama.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pyjama.ttf; sourceTree = "<group>"; };
 		4EB4128521AC4EF100C4603B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		4EFD910B21B56D7D00670FA7 /* HighscoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreTableViewCell.swift; sourceTree = "<group>"; };
 		4EFD910C21B56D7D00670FA7 /* HighscoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighscoreTableViewCell.xib; sourceTree = "<group>"; };
 		4EFD911221B5E3EA00670FA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4EFD911421B6873100670FA7 /* UnsplashPhotoModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhotoModelTest.swift; sourceTree = "<group>"; };
+		4EFD911A21B68B3700670FA7 /* MemoryGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameTest.swift; sourceTree = "<group>"; };
 		5067B9119D88C03069429651 /* Pods-Flip n WinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flip n WinTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flip n WinTests/Pods-Flip n WinTests.release.xcconfig"; sourceTree = "<group>"; };
 		805B99C6116479D745425960 /* Pods-Flip n Win.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flip n Win.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flip n Win/Pods-Flip n Win.debug.xcconfig"; sourceTree = "<group>"; };
 		896FD5F069D2332E792FD523 /* Pods_Flip_n_Win.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flip_n_Win.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +169,8 @@
 		4E511E6221A6F32E009E37A6 /* Flip n WinTests */ = {
 			isa = PBXGroup;
 			children = (
-				4E511E6321A6F32E009E37A6 /* Flip_n_WinTests.swift */,
+				4EFD911A21B68B3700670FA7 /* MemoryGameTest.swift */,
+				4EFD911421B6873100670FA7 /* UnsplashPhotoModelTest.swift */,
 				4E511E6521A6F32E009E37A6 /* Info.plist */,
 			);
 			path = "Flip n WinTests";
@@ -467,7 +474,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E511E6421A6F32E009E37A6 /* Flip_n_WinTests.swift in Sources */,
+				4EFD911621B6884700670FA7 /* UnsplashPhotoModel.swift in Sources */,
+				4EFD911921B68A1300670FA7 /* Card.swift in Sources */,
+				4EFD911521B6873100670FA7 /* UnsplashPhotoModelTest.swift in Sources */,
+				4EFD911B21B68B3700670FA7 /* MemoryGameTest.swift in Sources */,
+				4EFD911C21B68B3C00670FA7 /* MemoryGame.swift in Sources */,
+				4EFD911D21B6909C00670FA7 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +687,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 85UW6KZ74E;
-				INFOPLIST_FILE = "Flip'n WinTests/Info.plist";
+				INFOPLIST_FILE = "Flip n WinTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -697,7 +709,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 85UW6KZ74E;
-				INFOPLIST_FILE = "Flip'n WinTests/Info.plist";
+				INFOPLIST_FILE = "Flip n WinTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
